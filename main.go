@@ -10,7 +10,7 @@ func main() {
 		num1, num2, oper string //вводимые данные
 	)
 	for {
-		fmt.Println("Введите данные (операнд, оператор (+, -, /, *), операнд):")
+		//fmt.Println("Введите данные (операнд, оператор (+, -, /, *), операнд):")
 
 		_, err := fmt.Scanf("%s %s %s", &num1, &oper, &num2)
 		if err != nil {
@@ -20,6 +20,9 @@ func main() {
 		numint1, err1 := strconv.Atoi(num1)
 		numint2, err2 := strconv.Atoi(num2)
 
+		if numint1 > 10 || numint2 > 10 || numint1 < 0 || numint2 < 0 {
+			panic("Несоответствующее число.")
+		}
 		//если оба числа инт переходит в элс и считает
 		if err1 != nil || err2 != nil {
 			if !(err1 != nil && err2 != nil) {
@@ -42,6 +45,7 @@ func main() {
 			}
 
 		} else {
+
 			switch oper {
 			case "+":
 				fmt.Println(add(numint1, numint2))
@@ -91,7 +95,7 @@ func romanToInt(s string) int {
 			cur = 1
 		case 'V':
 			cur = 5
-		case 'X':
+/*		case 'X':
 			cur = 10
 		case 'L':
 			cur = 50
@@ -100,9 +104,9 @@ func romanToInt(s string) int {
 		case 'D':
 			cur = 500
 		case 'M':
-			cur = 1000
+			cur = 1000*/
 		default:
-			panic("Введина не римская цифра.")
+			panic("Введина не римская цифра I V.")
 
 		}
 		if cur > prev {
